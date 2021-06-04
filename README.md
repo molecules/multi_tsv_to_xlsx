@@ -38,3 +38,13 @@ optional arguments:
                         One or more csv files to add to spreadsheet
   --delimiter DELIMITER
                         Delimiter for input files (default: comma)
+
+# Acknowledgemnets
+
+Many thanks to the Pandas developers whose work does the heavy lifting for this script.
+
+Thanks to EdChum from StackOverflow (for the index=False answer in this question:  https://stackoverflow.com/a/22089870/215487).
+
+Thanks to stabledog from StackOverflow (for how to write multiple csv files to one spreadsheet: https://stackoverflow.com/revisions/42093077/4)
+
+Thanks to https://www.askpython.com/python-modules/pandas/remove-column-from-python-dataframe for pointing the pop method for removing columns.
