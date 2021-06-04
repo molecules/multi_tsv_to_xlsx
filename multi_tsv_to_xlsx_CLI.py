@@ -70,7 +70,7 @@ if __name__ == '__main__':
         '--delimiter',
         type=str,
         default="\t",
-        help='Delimiter for input files',
+        help='Delimiter for input files (default: tab character)',
     )
 
     # Capture the command line arguments
