@@ -1,7 +1,7 @@
 #!/cluster/biocompute/software/python/python-3.7.6/bin/python
-# multi_tsv_to_xlsx_CLI.py
+# multi_csv2xlsx
 """
-Create one xlsx file from multiple tab-separated-value files, with the option to remove columns.
+Create one xlsx file from multiple comma-separated-value files, with the option to remove columns.
 """
 
 import argparse
@@ -24,9 +24,9 @@ def main(args):
     # Create an Excel XLSX file writing object, using the first filename from the command line
     writer = pd.ExcelWriter(args.xlsx)
 
-    # Create a sheet for each TSV file
-    for tsv_file in args.tsv_files:
-        df = pd.read_csv(tsv_file, sep=args.delimiter)  # read in delimited file
+    # Create a sheet for each csv file
+    for csv_file in args.csv_files:
+        df = pd.read_csv(csv_file, sep=args.delimiter)  # read in delimited file
 
         if args.remove_cols:
             for column in args.remove_cols:
@@ -36,7 +36,7 @@ def main(args):
         df.to_excel(
             writer,
             # sheet has same name as file (without the extension)
-            sheet_name=os.path.splitext(tsv_file)[0],
+            sheet_name=os.path.splitext(csv_file)[0],
             index=False                               # prevent column of row numbers
         )
 
@@ -55,22 +55,22 @@ if __name__ == '__main__':
         help='Name of xlsx file to create',
     )
     parser.add_argument(
-        'tsv_files',
+        'csv_files',
         nargs='+',
         type=str,
-        help='One or more tsv files to add to spreadsheet',
+        help='One or more csv files to add to spreadsheet',
     )
     parser.add_argument(
         '--remove-cols',
         nargs='+',
         type=str,
-        help='One or more tsv files to add to spreadsheet',
+        help='One or more csv files to add to spreadsheet',
     )
     parser.add_argument(
         '--delimiter',
         type=str,
-        default="\t",
-        help='Delimiter for input files (default: tab character)',
+        default=",",
+        help='Delimiter for input files (default: comma)',
     )
 
     # Capture the command line arguments
